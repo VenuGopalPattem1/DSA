@@ -95,17 +95,25 @@ public class Challenge {
 		Map<String, List<String>> h = EmpList.stream().collect(
 				Collectors.groupingBy(Emp::getDepartment, Collectors.mapping(Emp::getName, Collectors.toList())));
 		System.out.println(h);
-		
+
 //		13.  What is the average salary and total salary of the whole organization ?
 		System.out.println("------------------------------------");
-		double db=EmpList.stream().mapToDouble(Emp::getSalary).sum();
+		double db = EmpList.stream().mapToDouble(Emp::getSalary).sum();
 		System.out.println(db);
-		OptionalDouble avg=EmpList.stream().mapToDouble(Emp::getSalary).average();
+		OptionalDouble avg = EmpList.stream().mapToDouble(Emp::getSalary).average();
 		System.out.println(avg);
+
+//		14.  Separate the employees who are younger or equal to 25 years from those employees who are older than 25 years ?
+		System.out.println("------------------------------------");
+		System.out.println("the belowe one is greate than 25 years of age");
+		EmpList.stream().filter(i->i.age>25).forEach(i->System.out.println(i));
+		System.out.println("the belowe one is less than 25 years of age");
+		EmpList.stream().filter(i->i.age<=25).forEach(i->System.out.println(i));
 		
+
 //		15.  Who is the oldest employee in the organization?
 		System.out.println("------------------------------------");
-		Optional<Emp> u=EmpList.stream().max(Comparator.comparing(Emp::getAge));
+		Optional<Emp> u = EmpList.stream().max(Comparator.comparing(Emp::getAge));
 		System.out.println(u.get());
 	}
 }
