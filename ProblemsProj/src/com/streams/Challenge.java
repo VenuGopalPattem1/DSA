@@ -115,7 +115,13 @@ public class Challenge {
 		System.out.println("------------------------------------");
 		Optional<Emp> u = EmpList.stream().max(Comparator.comparing(Emp::getAge));
 		System.out.println(u.get());
+		
+		
+		System.out.println("------------------------------------");
+		double num=EmpList.stream().mapToDouble(Emp::getSalary).sum();
+		System.out.println(num);
 	}
+	
 }
 
 class Emp {
