@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Array {
 	static void getdata(int a[],int l) {
 		if(l<=0)
+			
 			return;
 		else 
 		{
