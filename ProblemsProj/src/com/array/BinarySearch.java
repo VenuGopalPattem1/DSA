@@ -40,9 +40,9 @@ public class BinarySearch {
 
 	public static void main(String[] args) {
 		int[] a = new int[] { 74, 464, 89, 90, 39, 54, 67, 81, 12, 34, 55, 6, 3, 61, 61, 91 };
-		int tar = 61;
+		int tar = 74;
 		Arrays.sort(a);
-		System.out.println(binary2(a, tar));
+		System.out.println(binary(a, tar));
 		System.out.println(Arrays.toString(a));
 //		if(h%2==0)
 //			System.out.print(a[l]);
