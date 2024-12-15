@@ -20,7 +20,7 @@ public class Challenge {
 		EmpList.add(new Emp(5, "Charles", 27, "Male", "HR", 2013, 22700.0));
 		EmpList.add(new Emp(6, "Cathy", 43, "Male", "Security", 2016, 10500.0));
 		EmpList.add(new Emp(7, "Ramesh", 35, "Male", "Finance", 2010, 27000.0));
-		EmpList.add(new Emp(8, "Suresh", 31, "Male", "Development", 2015, 34500.0));
+		EmpList.add(new Emp(8, "Suresh", 31, "Male", "Development", 2015, 340500.0));
 		EmpList.add(new Emp(9, "Gita", 24, "Female", "Sales", 2016, 11500.0));
 		EmpList.add(new Emp(10, "Mahesh", 38, "Male", "Security", 2015, 11000.5));
 		EmpList.add(new Emp(11, "Gouri", 27, "Female", "Infrastructure", 2014, 105700.0));
@@ -42,12 +42,12 @@ public class Challenge {
 //      3. What is the average age of male and female employees ?
 		System.out.println("------------------------------------");
 		Map<String, Double> s = EmpList.stream()
-				.collect(Collectors.groupingBy(Emp::getGender, Collectors.averagingDouble(e -> e.getSalary())));
+				.collect(Collectors.groupingBy(Emp::getGender, Collectors.averagingDouble(Emp::getSalary)));
 		System.out.println(s);
 
 //		4. Get the details of highest paid employee in the organization ?
 		System.out.println("------------------------------------");
-		Optional<Emp> l = EmpList.stream().collect(Collectors.maxBy(Comparator.comparing(e -> e.salary)));
+		Optional<Emp> l = EmpList.stream().collect(Collectors.maxBy(Comparator.comparing(Emp::getSalary)));
 		System.out.println(l.get());
 
 //		5. Get the names of all employees who have joined after 2015 ?
@@ -106,22 +106,20 @@ public class Challenge {
 //		14.  Separate the employees who are younger or equal to 25 years from those employees who are older than 25 years ?
 		System.out.println("------------------------------------");
 		System.out.println("the belowe one is greate than 25 years of age");
-		EmpList.stream().filter(i->i.age>25).forEach(i->System.out.println(i));
+		EmpList.stream().filter(i -> i.age > 25).forEach(i -> System.out.println(i));
 		System.out.println("the belowe one is less than 25 years of age");
-		EmpList.stream().filter(i->i.age<=25).forEach(i->System.out.println(i));
-		
+		EmpList.stream().filter(i -> i.age <= 25).forEach(i -> System.out.println(i));
 
 //		15.  Who is the oldest employee in the organization?
 		System.out.println("------------------------------------");
 		Optional<Emp> u = EmpList.stream().max(Comparator.comparing(Emp::getAge));
 		System.out.println(u.get());
-		
-		
+
 		System.out.println("------------------------------------");
-		double num=EmpList.stream().mapToDouble(Emp::getSalary).sum();
+		double num = EmpList.stream().mapToDouble(Emp::getSalary).sum();
 		System.out.println(num);
 	}
-	
+
 }
 
 class Emp {
